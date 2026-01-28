@@ -6,6 +6,35 @@ Escalation is the mechanism by which an agent pauses autonomous execution to req
 
 ---
 
+## ⚠️ Quick Reference Card
+
+**CHECK THIS FIRST before any task.**
+
+### Must Escalate (STOP and ask)
+
+| Trigger | Example |
+|---------|---------|
+| 🏗️ Architecture | New service, schema change, new dependency |
+| 🔒 Security | Auth changes, crypto, access control |
+| 💾 Data | PII handling, migrations, retention |
+| ⚡ Breaking | API changes, deprecations |
+| ❓ Uncertainty | Multiple valid approaches, unclear requirements |
+| 🔄 Iterations | 5+ failed attempts |
+
+### Safe to Proceed (no escalation)
+
+| Action | Why Safe |
+|--------|----------|
+| Bug fix with clear cause | No design decision |
+| Doc improvements | No behavior change |
+| Test additions | No production impact |
+| Style refactoring | Within patterns |
+| Patch updates | Non-breaking |
+
+**When in doubt → Escalate.**
+
+---
+
 ## Mandatory Escalation Triggers
 
 These situations **always** require human validation before proceeding:

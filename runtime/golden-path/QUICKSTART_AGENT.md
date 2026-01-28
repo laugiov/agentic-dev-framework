@@ -35,7 +35,48 @@ This guide provides the file reading order, extraction strategy, and execution g
 
 ---
 
-## First Task Execution
+## Before You Start: Two Critical Checks
+
+### Check 1: Escalation Triggers
+
+**STOP and escalate if ANY of these apply:**
+
+- [ ] Architecture or design decisions needed
+- [ ] Security implications
+- [ ] Database schema changes
+- [ ] New external dependencies
+- [ ] Multiple valid approaches (need human choice)
+- [ ] Unclear or ambiguous requirements
+- [ ] Changes affecting > 5 files
+
+See [ESCALATION_RULES.md](../../core/agent-operating-model/ESCALATION_RULES.md) for details.
+
+### Check 2: Task Size → Workflow Selection
+
+| Size | Criteria | Workflow |
+|------|----------|----------|
+| **Trivial** | < 10 lines, 1 file, no triggers | Fast Path |
+| **Small** | 10-50 lines, 1-2 files | Lite (C0+C2+C3) |
+| **Medium** | 50-200 lines, 2-5 files | Full (C0-C3) |
+| **Large** | > 200 lines or > 5 files | Full + Extra Review |
+
+**When in doubt, use Full workflow.**
+
+---
+
+## Fast Path (Trivial Tasks Only)
+
+If ALL criteria met: < 10 lines, 1 file, no escalation triggers, doc/bugfix only.
+
+1. **Quick C0**: State objective in one line
+2. **Implement**: Make the change
+3. **Quick C3**: Minimal PR with Fast Path template
+
+See [CHECKPOINTS.md](../../core/spec/CHECKPOINTS.md#fast-path-trivial-tasks-only) for template.
+
+---
+
+## Standard Workflow (Small/Medium/Large Tasks)
 
 ### Step 1: Comprehension (C0)
 

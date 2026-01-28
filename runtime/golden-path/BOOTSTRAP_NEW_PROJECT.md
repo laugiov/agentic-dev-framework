@@ -184,6 +184,91 @@ You are working on [PROJECT NAME].
 
 ---
 
+## Option D: Micro Setup (Absolute Minimum)
+
+For teams that want maximum value with minimal files.
+
+Based on real-world testing, these 2 files provide 80% of the value:
+
+### Files (Just 2)
+
+```
+your-project/
+├── docs/
+│   └── CHECKPOINTS.md     # Core workflow
+└── .github/
+    └── pull_request_template.md   # Proof collection
+```
+
+### Why These Two?
+
+| File | Value |
+|------|-------|
+| CHECKPOINTS.md | Forces structured thinking, includes escalation triggers |
+| PR template | Ensures documentation, creates audit trail |
+
+### Micro CHECKPOINTS.md
+
+```markdown
+# Checkpoints
+
+## ⚠️ FIRST: Check Escalation Triggers
+
+**STOP and escalate if ANY apply:**
+
+- [ ] Architecture decision (new service, schema, dependency)
+- [ ] Security concern (auth, crypto, access control)
+- [ ] Data change (PII, migration, retention)
+- [ ] Breaking change (API, deprecation)
+- [ ] Uncertainty (multiple approaches, unclear requirements)
+
+If any checked → STOP → Ask human → Wait for response.
+
+## Task Size → Workflow
+
+| Size | Lines | Workflow |
+|------|-------|----------|
+| Trivial | < 10 | Fast Path (this checklist + PR) |
+| Small | 10-50 | Lite (add brief plan) |
+| Medium+ | > 50 | Full (detailed plan + risks) |
+
+## Checklist
+
+- [ ] **C0**: I understand the task and scope
+- [ ] **C1**: I have a plan (for non-trivial tasks)
+- [ ] **C2**: Tests pass, lint passes
+- [ ] **C3**: PR documents the change
+```
+
+### Micro PR Template
+
+```markdown
+## Summary
+[One sentence: what and why]
+
+## Checkpoints
+- [ ] No escalation triggers apply
+- [ ] C0: Understood task
+- [ ] C2: Tests pass
+- [ ] C3: Ready for review
+
+## Changes
+[List files changed]
+
+## Testing
+[What was tested]
+```
+
+### When to Upgrade from Micro
+
+Consider full setup when:
+- Team grows beyond 2-3 people
+- Project complexity increases
+- More agents working concurrently
+- Need formal escalation tracking
+
+---
+
 ## Customization Guide
 
 ### Adapting Checkpoints
@@ -304,7 +389,11 @@ ml-project/
 
 ## Next Steps
 
-1. Choose your adoption level (Full / Minimal / Agent-Only)
+1. Choose your adoption level:
+   - **Full** — Complete framework (recommended for complex projects)
+   - **Minimal** — Essential files (6 files)
+   - **Agent-Only** — Just agent guidance (existing projects)
+   - **Micro** — Absolute minimum (2 files, 80% value)
 2. Copy the relevant files
 3. Customize for your project
 4. Test with an AI agent

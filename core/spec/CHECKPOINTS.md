@@ -6,6 +6,60 @@ Checkpoints are mandatory validation stages that ensure quality and enable human
 
 ---
 
+## Task Size Classification
+
+**First step**: Assess task size to determine the appropriate workflow.
+
+| Size | Lines Changed | Files | Workflow | Example |
+|------|---------------|-------|----------|---------|
+| **Trivial** | < 10 | 1 | Fast Path | Fix typo, update version |
+| **Small** | 10-50 | 1-2 | Lite (C0+C2+C3) | Add function, fix bug |
+| **Medium** | 50-200 | 2-5 | Full (C0-C3) | New feature, refactor |
+| **Large** | > 200 | 5+ | Full + Extra Review | Major feature, migration |
+
+**Default to Full workflow** if uncertain about size.
+
+---
+
+## Fast Path (Trivial Tasks Only)
+
+For trivial changes (< 10 lines, single file, no escalation triggers):
+
+### Fast Path Requirements
+
+1. **Quick C0**: One-line scope statement
+2. **Skip C1**: No planning document needed
+3. **Quick C2**: Implement + verify
+4. **Minimal C3**: Short PR description
+
+### Fast Path Criteria (ALL must be true)
+
+- [ ] Change is < 10 lines
+- [ ] Only 1 file modified
+- [ ] No escalation triggers apply
+- [ ] Documentation or bug fix only
+- [ ] No new dependencies
+- [ ] No architecture changes
+
+### Fast Path PR Template
+
+```markdown
+## Summary
+[One sentence]
+
+## Fast Path Confirmation
+- [x] < 10 lines, single file
+- [x] No escalation triggers
+- [x] Tests pass (if applicable)
+
+## Change
+[Brief description]
+```
+
+**If ANY doubt**: Use standard workflow, not Fast Path.
+
+---
+
 ## Checkpoint Overview
 
 | Checkpoint | Name | Purpose |

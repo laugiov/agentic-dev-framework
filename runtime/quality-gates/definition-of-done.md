@@ -6,6 +6,21 @@ This document defines the criteria that must be satisfied before work is conside
 
 ---
 
+## DoD by Task Size
+
+Different task sizes require different levels of documentation:
+
+| Size | DoD Level | Required Proofs |
+|------|-----------|-----------------|
+| **Trivial** (< 10 lines) | Minimal | Fast Path PR template only |
+| **Small** (10-50 lines) | Lite | C0 scope + C2 tests + C3 PR |
+| **Medium** (50-200 lines) | Full | All checkpoints documented |
+| **Large** (> 200 lines) | Full + Review | All checkpoints + extra review |
+
+See [CHECKPOINTS.md](../../core/spec/CHECKPOINTS.md#task-size-classification) for size criteria.
+
+---
+
 ## Universal Criteria
 
 These apply to ALL changes:
