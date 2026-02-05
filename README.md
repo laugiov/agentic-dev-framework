@@ -1,25 +1,33 @@
-# AI-Driven Development Framework
+# Agentic Development Framework
 
 [![Documentation](https://img.shields.io/badge/docs-99%20files-blue)](./DOCUMENTATION_INDEX.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 
-> A **technology-agnostic framework** for autonomous AI-driven software delivery — from Issue to PR with human oversight at defined checkpoints.
+> **A methodology framework for AI-assisted software development.** Structure your AI coding workflow with checkpoints, escalation rules, and human oversight to ship quality code faster.
 
 ---
 
-## What This Repo Is
+## What Problem This Solves
 
-1. **An agentic development framework** for autonomous Issue→PR workflows where AI agents plan, implement, test, and deliver with human oversight at defined checkpoints.
+AI coding assistants can generate code fast, but without structure:
+- Developers spend too much time validating AI output
+- Quality is inconsistent across sessions
+- Security issues slip through
+- No clear process for when to trust vs. verify
 
-2. **A methodology** for writing unambiguous, security-by-design documentation that enables AI coding assistants to implement systems without drifting from standards.
+This framework provides **guardrails** that make AI-assisted development predictable, secure, and scalable.
 
-3. **A complete example** demonstrating the methodology applied to a real-world platform (PHP/Symfony/Kubernetes).
+---
 
-## What This Repo Is NOT
+## What This Framework Provides
 
-- Not tied to any specific technology stack
-- Not a prompt library or "magic" AI coding tricks
-- Not autonomous execution without human supervision
+| Component | Purpose |
+|-----------|---------|
+| **Checkpoints** (C0→C3) | Structured workflow: Scope → Plan → Implement → PR |
+| **Escalation Rules** | When AI must stop and ask the human |
+| **Quality Gates** | Automated + human verification at each stage |
+| **Security Module** | DevSecOps for AI-generated code |
+| **Factory Model** | Scale to multiple agents and batch processing |
 
 ---
 
@@ -27,99 +35,161 @@
 
 | Your Goal | Start With |
 |-----------|------------|
-| **Apply to your own project** | [BOOTSTRAP_NEW_PROJECT.md](runtime/golden-path/BOOTSTRAP_NEW_PROJECT.md) |
-| Explore agentic workflows | [core/README.md](core/README.md) |
-| Understand the methodology | [METHODOLOGY.md](METHODOLOGY.md) |
-| See a complete example | [examples/php-symfony-k8s/](examples/php-symfony-k8s/) |
-| Find your path by profile | [REPO_MAP.md](REPO_MAP.md) |
+| **Apply to your project** | [Bootstrap Guide](runtime/golden-path/BOOTSTRAP_NEW_PROJECT.md) |
+| Learn the workflow | [Agent Quickstart](runtime/golden-path/QUICKSTART_AGENT.md) |
+| Understand checkpoints | [Checkpoints Spec](core/spec/CHECKPOINTS.md) |
+| See real examples | [Case Studies](case-studies/) |
+| Scale to teams | [Factory Model](core/factory-model/) |
+| Secure AI code | [Security Module](core/security/) |
+
+---
+
+## The Core Workflow
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    BEFORE ANY WORK                          │
+│   Check Escalation Triggers → If any apply → STOP → Ask     │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│ C0: SCOPE                                                    │
+│ • Understand the task                                       │
+│ • Define what's in/out of scope                             │
+│ • Identify affected files                                   │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│ C1: PLAN (for non-trivial tasks)                            │
+│ • Document approach                                         │
+│ • Identify risks                                            │
+│ • Get human validation if needed                            │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│ C2: IMPLEMENT                                                │
+│ • Write code following plan                                 │
+│ • Run tests                                                 │
+│ • Pass automated gates                                      │
+└─────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────┐
+│ C3: PR & PROOFS                                              │
+│ • Document what was done                                    │
+│ • Provide evidence (tests, screenshots)                     │
+│ • Human reviews and approves                                │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Escalation Rules — The Highest Value Component
+
+AI agents must **stop and ask** when:
+
+| Trigger | Example |
+|---------|---------|
+| Architecture decisions | New service, schema change, new dependency |
+| Security concerns | Auth changes, crypto, access control |
+| Data handling | PII, migrations, retention policies |
+| Breaking changes | API changes, deprecations |
+| Uncertainty | Multiple valid approaches, unclear requirements |
+
+See [ESCALATION_RULES.md](core/agent-operating-model/ESCALATION_RULES.md)
+
+---
+
+## Task Size → Workflow
+
+Not every task needs the full workflow:
+
+| Size | Lines | Workflow |
+|------|-------|----------|
+| **Trivial** | < 10 | Fast Path (C0 + C3 only) |
+| **Small** | 10-50 | Lite (C0 + C2 + C3) |
+| **Medium** | 50-200 | Full (C0 → C1 → C2 → C3) |
+| **Large** | > 200 | Full + Extra Review |
 
 ---
 
 ## Repository Structure
 
 ```
-├── [Framework]
-│   ├── core/                  Agent operating model, checkpoints, templates
-│   ├── runtime/               Quickstarts, prompts, quality gates
-│   ├── bench/                 10 benchmark tasks, scoring, runner
-│   └── tools/                 Validation utilities
+├── core/
+│   ├── agent-operating-model/   Roles, escalation, golden rules
+│   ├── spec/                    Checkpoints, templates
+│   ├── security/                DevSecOps for AI code
+│   └── factory-model/           Scale: multi-agent, batch, metrics
 │
-├── [Examples]
-│   └── php-symfony-k8s/       Complete reference implementation
+├── runtime/
+│   ├── golden-path/             Quickstarts, bootstrap
+│   ├── prompts/                 System prompts for agents
+│   └── quality-gates/           Definition of done
 │
-├── [Methodology]              README, METHODOLOGY, GLOSSARY
-├── [Case Studies]             case-studies/
-└── [Supporting]               LICENSE, CONTRIBUTING, .github/
+├── case-studies/                Real workflow examples
+├── bench/                       Benchmark tasks
+├── examples/php-symfony-k8s/    Complete reference implementation
+└── tools/                       Validation utilities
 ```
-
-Full index: [DOCUMENTATION_INDEX.md](DOCUMENTATION_INDEX.md)
 
 ---
 
-## The Framework
+## Security Module — Your Competitive Edge
 
-### Agent Operating Model
+AI-generated code needs additional security controls:
 
-Defines how AI agents work autonomously within boundaries:
-- **5 Roles**: Manager, Planner, Implementer, Tester, Reviewer
-- **Workflow**: Plan → Act → Observe → Fix
-- **Checkpoints**: C0 (scope) → C1 (plan) → C2 (implement) → C3 (PR)
+| Component | Purpose |
+|-----------|---------|
+| [Secure Code Generation](core/security/SECURE_CODE_GENERATION.md) | Security-aware prompts, OWASP rules |
+| [Security Gates](core/security/SECURITY_GATES.md) | SAST, secrets detection, dependency scanning |
+| [Supply Chain Security](core/security/SUPPLY_CHAIN_SECURITY.md) | Dependencies, AI model trust |
+| [Audit Trail](core/security/AUDIT_TRAIL.md) | Traceability for all AI-generated code |
 
-See [core/agent-operating-model/](core/agent-operating-model/)
+---
 
-### Escalation Rules
+## Factory Model — Scale to Teams
 
-When agents must pause and request human input:
-- Architecture decisions
-- Security concerns
-- Multiple valid approaches
-- Iteration limits reached
+When you need more than 1 developer + 1 AI:
 
-See [core/agent-operating-model/ESCALATION_RULES.md](core/agent-operating-model/ESCALATION_RULES.md)
+| Component | Purpose |
+|-----------|---------|
+| [Multi-Agent Orchestration](core/factory-model/MULTI_AGENT_ORCHESTRATION.md) | Coordinate N agents on M tasks |
+| [Batch Pipeline](core/factory-model/BATCH_PIPELINE.md) | Overnight code generation |
+| [Automated Gates](core/factory-model/AUTOMATED_GATES.md) | Pre-review quality checks |
+| [Metrics Dashboard](core/factory-model/METRICS_DASHBOARD.md) | Track and optimize |
 
-### Quality Gates
+---
 
-Definition of Done by change type:
-- Documentation, code, configuration, schema changes
-- Machine-checkable and human-judgment criteria
+## Adoption Levels
 
-See [runtime/quality-gates/](runtime/quality-gates/)
+| Level | Files | Time to Start |
+|-------|-------|---------------|
+| **Micro** | 2 files | 10 minutes |
+| **Minimal** | 6 files | 30 minutes |
+| **Full** | Complete framework | 2 hours |
+| **Factory** | + Scale modules | 1 week |
+
+See [Bootstrap Guide](runtime/golden-path/BOOTSTRAP_NEW_PROJECT.md)
 
 ---
 
 ## Key Principles
 
-### Explicit Over Implicit
-Every decision includes justification. AI agents follow documented reasoning, not guesses.
-
-### Validation Checkpoints
-Every workflow stage includes verification criteria for self-validation.
-
 ### Human at the Checkpoints
-Autonomous execution within bounds; escalation and approval at defined gates.
+AI executes autonomously within bounds. Humans approve at defined gates.
 
-### Technology Agnostic
-The framework applies to any stack. Adapt checkpoints and prompts to your tools.
+### Escalation Over Assumption
+When in doubt, the AI asks. It's faster to clarify than to fix bad code.
 
----
+### Proportional Process
+Trivial tasks get fast path. Complex tasks get full workflow.
 
-## Examples
-
-### PHP/Symfony/Kubernetes
-
-A complete reference implementation with documentation files:
-
-| Area | Content |
-|------|---------|
-| Architecture | Hexagonal, DDD, microservices |
-| Security | Zero Trust, OAuth2, Vault |
-| Infrastructure | Kubernetes, Istio, observability |
-| Development | Coding standards, testing, APIs |
-| Operations | Monitoring, incident response, DR |
-
-See [examples/php-symfony-k8s/](examples/php-symfony-k8s/)
-
-*More examples welcome via contributions.*
+### Security by Default
+Every line of AI-generated code goes through security gates.
 
 ---
 
@@ -137,4 +207,4 @@ MIT License — See [LICENSE](LICENSE) for details.
 
 ---
 
-*A technology-agnostic framework for AI-driven software delivery.*
+*A methodology framework for AI-assisted software development — ship quality code faster with human oversight.*

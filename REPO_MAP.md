@@ -2,7 +2,7 @@
 
 > **Find your path in 60 seconds.**
 
-A **technology-agnostic framework** for autonomous AI-driven software delivery — from Issue to PR with human oversight at defined checkpoints.
+A **methodology framework for AI-assisted software development** — checkpoints, escalation rules, and human oversight to ship quality code faster.
 
 ---
 
@@ -10,9 +10,11 @@ A **technology-agnostic framework** for autonomous AI-driven software delivery �
 
 | Profile | Start Here | Then Read |
 |---------|------------|-----------|
-| **Apply to Your Project** | [BOOTSTRAP_NEW_PROJECT.md](runtime/golden-path/BOOTSTRAP_NEW_PROJECT.md) | [core/](core/) → [runtime/prompts/](runtime/prompts/) |
-| **Agentic Researcher** | [core/README.md](core/README.md) | [runtime/](runtime/) → [bench/](bench/) |
-| **Explore the Example** | [examples/php-symfony-k8s/](examples/php-symfony-k8s/) | [LLM_USAGE_GUIDE](examples/php-symfony-k8s/LLM_USAGE_GUIDE.md) |
+| **Apply to Your Project** | [Bootstrap Guide](runtime/golden-path/BOOTSTRAP_NEW_PROJECT.md) | [Checkpoints](core/spec/CHECKPOINTS.md) → [System Prompt](runtime/prompts/CLAUDE_CODE_SYSTEM.md) |
+| **Learn the Workflow** | [Agent Quickstart](runtime/golden-path/QUICKSTART_AGENT.md) | [Escalation Rules](core/agent-operating-model/ESCALATION_RULES.md) |
+| **Scale to Teams** | [Factory Model](core/factory-model/) | [Multi-Agent](core/factory-model/MULTI_AGENT_ORCHESTRATION.md) → [Metrics](core/factory-model/METRICS_DASHBOARD.md) |
+| **Secure AI Code** | [Security Module](core/security/) | [Security Gates](core/security/SECURITY_GATES.md) → [Audit Trail](core/security/AUDIT_TRAIL.md) |
+| **See Examples** | [Case Studies](case-studies/) | [PHP/Symfony Example](examples/php-symfony-k8s/) |
 
 ---
 
@@ -21,74 +23,81 @@ A **technology-agnostic framework** for autonomous AI-driven software delivery �
 ```
 ai-driven-dev-instructions/
 │
-├── [Framework]                      # Technology-agnostic core
-│   ├── core/                        # Agent operating model, checkpoints, templates
-│   │   ├── agent-operating-model/   # Roles, workflow, escalation, handoffs
-│   │   ├── spec/                    # Checkpoints, DoD, risk model
-│   │   └── templates/               # ADR template
+├── [Core Framework]
+│   ├── core/
+│   │   ├── agent-operating-model/   # Roles, workflow, escalation
+│   │   ├── spec/                    # Checkpoints, templates
+│   │   ├── security/                # DevSecOps for AI code [NEW]
+│   │   │   ├── SECURE_CODE_GENERATION.md
+│   │   │   ├── SECURITY_GATES.md
+│   │   │   ├── SUPPLY_CHAIN_SECURITY.md
+│   │   │   └── AUDIT_TRAIL.md
+│   │   └── factory-model/           # Scale to teams [NEW]
+│   │       ├── MULTI_AGENT_ORCHESTRATION.md
+│   │       ├── BATCH_PIPELINE.md
+│   │       ├── AUTOMATED_GATES.md
+│   │       └── METRICS_DASHBOARD.md
 │   │
-│   ├── runtime/                     # Execution guides and prompts
-│   │   ├── golden-path/             # Quickstarts, bootstrap, first task
-│   │   ├── prompts/                 # Agent role prompts, system prompt
+│   ├── runtime/
+│   │   ├── golden-path/             # Quickstarts, bootstrap
+│   │   ├── prompts/                 # System prompts
 │   │   └── quality-gates/           # Definition of Done
 │   │
-│   ├── bench/                       # Benchmark suite
-│   │   ├── tasks/                   # 10 benchmark tasks (T001-T010)
-│   │   ├── scoring/                 # Scoring schema and rubric
-│   │   └── runner/                  # Execution scripts
-│   │
+│   ├── bench/                       # Benchmark tasks
 │   └── tools/                       # Validation utilities
 │
-├── [Examples]                       # Stack-specific implementations
+├── [Examples]
 │   └── php-symfony-k8s/             # Complete reference (52 docs)
-│       ├── 01-architecture/         # System design, ADRs, DDD
-│       ├── 02-security/             # Zero Trust, OAuth2, Vault
-│       ├── 03-infrastructure/       # Kubernetes, Istio, observability
-│       ├── 04-development/          # Coding standards, testing, APIs
-│       ├── 05-code-review/          # Review checklists
-│       ├── 06-cicd/                 # Pipeline, GitOps
-│       ├── 07-operations/           # Monitoring, incidents, DR
-│       └── 08-services/             # 7 microservice specs
-│
-├── [Methodology]
-│   ├── README.md                    # Project overview
-│   ├── REPO_MAP.md                  # This file
-│   ├── METHODOLOGY.md               # Core methodology
-│   ├── GLOSSARY.md                  # Terminology
-│   └── DOCUMENTATION_INDEX.md       # Complete file index
 │
 ├── [Case Studies]
-│   └── case-studies/                # Real-world applications
+│   └── case-studies/                # Real workflow examples
 │
 └── [Supporting]
+    ├── README.md                    # Project overview
+    ├── REPO_MAP.md                  # This file
+    ├── METHODOLOGY.md               # Core methodology
+    ├── GLOSSARY.md                  # Terminology
     ├── CONTRIBUTING.md
-    ├── LICENSE
-    └── .github/                     # Templates & workflows
+    └── LICENSE
 ```
 
 ---
 
 ## Quick Start Paths
 
-### Path A: Apply to Your Own Project
-1. [BOOTSTRAP_NEW_PROJECT.md](runtime/golden-path/BOOTSTRAP_NEW_PROJECT.md) — Setup guide (full/minimal/agent-only)
-2. [core/spec/CHECKPOINTS.md](core/spec/CHECKPOINTS.md) — Adapt checkpoints to your stack
-3. [runtime/prompts/CLAUDE_CODE_SYSTEM.md](runtime/prompts/CLAUDE_CODE_SYSTEM.md) — Customize system prompt
+### Path A: Apply to Your Project (Fastest)
 
-### Path B: Understand the Framework
-1. [core/README.md](core/README.md) — Agent Operating Model overview
-2. [core/agent-operating-model/AGENT_OPERATING_MODEL.md](core/agent-operating-model/AGENT_OPERATING_MODEL.md) — Roles and workflow
-3. [runtime/README.md](runtime/README.md) — Execution guides
+1. [BOOTSTRAP_NEW_PROJECT.md](runtime/golden-path/BOOTSTRAP_NEW_PROJECT.md) — Choose your setup level
+2. [CHECKPOINTS.md](core/spec/CHECKPOINTS.md) — Understand the workflow
+3. [ESCALATION_RULES.md](core/agent-operating-model/ESCALATION_RULES.md) — Know when to stop
 
-### Path C: Explore Agentic Development
-1. [core/README.md](core/README.md) — What "agentic-ready" means
-2. [runtime/README.md](runtime/README.md) — How to run agentic cycles
-3. [bench/README.md](bench/README.md) — Measure agent performance
+**Minimum setup**: 2 files (Micro option)
 
-### Path D: Learn from the Example
-1. [examples/php-symfony-k8s/README.md](examples/php-symfony-k8s/README.md) — Example overview
-2. [examples/php-symfony-k8s/LLM_USAGE_GUIDE.md](examples/php-symfony-k8s/LLM_USAGE_GUIDE.md) — Task-based navigation
-3. [METHODOLOGY.md](METHODOLOGY.md) — Documentation methodology
+### Path B: Understand the Methodology
+
+1. [README.md](README.md) — What problem this solves
+2. [QUICKSTART_AGENT.md](runtime/golden-path/QUICKSTART_AGENT.md) — The core workflow
+3. [Case Studies](case-studies/) — See real examples
+
+### Path C: Secure AI-Generated Code
+
+1. [Security README](core/security/README.md) — Overview
+2. [SECURE_CODE_GENERATION.md](core/security/SECURE_CODE_GENERATION.md) — Prompts and rules
+3. [SECURITY_GATES.md](core/security/SECURITY_GATES.md) — CI/CD integration
+4. [AUDIT_TRAIL.md](core/security/AUDIT_TRAIL.md) — Traceability
+
+### Path D: Scale to Teams
+
+1. [Factory Model README](core/factory-model/README.md) — Overview
+2. [AUTOMATED_GATES.md](core/factory-model/AUTOMATED_GATES.md) — Start here (highest value)
+3. [BATCH_PIPELINE.md](core/factory-model/BATCH_PIPELINE.md) — Overnight generation
+4. [MULTI_AGENT_ORCHESTRATION.md](core/factory-model/MULTI_AGENT_ORCHESTRATION.md) — Coordinate agents
+
+### Path E: Benchmark Agent Performance
+
+1. [bench/README.md](bench/README.md) — Benchmark overview
+2. [bench/tasks/](bench/tasks/) — 10 benchmark tasks
+3. [bench/scoring/](bench/scoring/) — Scoring rubric
 
 ---
 
@@ -96,25 +105,38 @@ ai-driven-dev-instructions/
 
 | Term | Definition |
 |------|------------|
-| **Agentic-ready** | A repo structured for autonomous AI agent execution with human checkpoints |
-| **Golden Path** | The fastest route from zero to first successful Issue→PR |
-| **Checkpoint** | A validation gate where human approval may be required |
-| **Handoff** | Structured transfer of work between agent roles |
-| **Escalation** | When an agent must pause and request human decision |
+| **Checkpoint** | Validation gate (C0=scope, C1=plan, C2=implement, C3=PR) |
+| **Escalation** | When AI must pause and ask the human |
+| **Fast Path** | Minimal workflow for trivial changes (< 10 lines) |
+| **Golden Path** | Fastest route from issue to merged PR |
+| **Factory Model** | Scale: multiple agents, batch processing, metrics |
 
 See [GLOSSARY.md](GLOSSARY.md) for complete terminology.
 
 ---
 
-## Framework vs Examples
+## Adoption Levels
 
-| Component | Purpose | Technology |
-|-----------|---------|------------|
-| **Framework** (core/, runtime/, bench/) | Universal agentic development patterns | Agnostic |
-| **Examples** (examples/) | Reference implementations | Stack-specific |
-
-The framework defines *how* AI agents work autonomously with human oversight. Examples show *what* this looks like for specific technology stacks.
+| Level | What You Get | Files |
+|-------|--------------|-------|
+| **Micro** | Checkpoints + PR template | 2 |
+| **Minimal** | + Issue templates, agent guide | 6 |
+| **Full** | + Full operating model, prompts | 15+ |
+| **Factory** | + Security, scale, metrics | 25+ |
 
 ---
 
-*Last updated: 2026-01-28*
+## Component Overview
+
+| Component | Purpose | When to Use |
+|-----------|---------|-------------|
+| **Checkpoints** | Structure work into stages | Always |
+| **Escalation Rules** | Know when AI should ask | Always |
+| **Quality Gates** | Define "done" by task type | Always |
+| **Security Module** | Secure AI-generated code | When security matters |
+| **Factory Model** | Scale beyond 1 dev + 1 AI | Team-scale projects |
+| **Benchmarks** | Measure agent performance | Optimization |
+
+---
+
+*Last updated: 2026-02-05*
